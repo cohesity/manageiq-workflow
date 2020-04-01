@@ -1,6 +1,6 @@
-## miq-workflow
+## ManageIQ VMware Workflow
 
-To import/export ManageIQ constructs. Refer <a href="https://github.com/rhtconsulting/cfme-rhconsulting-scripts"> this </a> link
+To import/export these ManageIQ constructs. Refer <a href="https://github.com/rhtconsulting/cfme-rhconsulting-scripts"> this </a> link
 
 ## VMware workflow playbooks
 
