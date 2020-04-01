@@ -1,0 +1,37 @@
+---
+  - hosts: localhost
+    # => Please change these variables to connect
+    # => to your Cohesity Cluster
+    vars:
+        var_cohesity_server: 10.2.33.137
+        var_cohesity_admin: admin
+        var_validate_certs: False
+        var_cohesity_restore_name: "Ansible Test File Restore"
+        var_power_state: off
+        var_network_connected: off
+        var_prefix: "restored-"
+        var_wait_minutes: 30
+        var_wait_for_job: yes
+    roles:
+      - cohesity.cohesity_ansible_role
+    tasks:
+      - name: Restore VM
+        include_role:
+            name: cohesity.cohesity_ansible_role
+            tasks_from: restore_vm
+        vars:
+            cohesity_server: "{{ var_cohesity_server }}"
+            cohesity_admin: "{{ var_cohesity_admin }}"
+            cohesity_password: "{{ var_cohesity_password }}"
+            cohesity_validate_certs: "{{ var_validate_certs }}"
+            cohesity_restore_vm:
+                name: "{{ var_cohesity_restore_name }}"
+                endpoint: "{{ var_cohesity_endpoint }}"
+                environment: "VMware"
+                job_name: "{{ var_cohesity_job_name }}"
+                vms: "{{ var_cohesity_vms }}"
+                power_state: "{{ var_power_state }}"
+                network_connected: "{{ var_network_connected }}"
+                prefix: "{{ var_prefix }}"
+                wait_minutes: "{{ var_wait_minutes }}"
+                wait_for_job: "{{ var_wait_for_job }}"

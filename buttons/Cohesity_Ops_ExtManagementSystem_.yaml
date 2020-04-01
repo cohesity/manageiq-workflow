@@ -1,0 +1,138 @@
+---
+:custom_buttons_sets:
+- name: Cohesity Ops|ExtManagementSystem|
+  description: View all Cohesity Actions
+  set_type: CustomButtonSet
+  read_only: 
+  mode: 
+  custom_buttons:
+  - description: Create Protection Job
+    applies_to_class: ExtManagementSystem
+    options:
+      :button_icon: pficon pficon-pending
+      :button_type: ansible_playbook
+      :display: true
+      :open_url: false
+      :display_for: single
+      :submit_how: one
+    userid: admin
+    wait_for_complete: 
+    name: Create Job
+    visibility:
+      :roles:
+      - _ALL_
+    visibility_expression: 
+    enablement_expression: 
+    applies_to_id: 
+    disabled_text: 
+    resource_actions:
+      action: 
+      ae_namespace: SYSTEM
+      ae_class: PROCESS
+      ae_instance: Request
+      ae_message: create
+      ae_attributes:
+        request: Order_Ansible_Playbook
+        :service_template_name: Create a Protection Job
+        :hosts: localhost
+      dialog_label: CreateProtectionJob
+  - description: Create Protection Policy
+    applies_to_class: ExtManagementSystem
+    options:
+      :button_icon: fa fa-file-o
+      :button_type: ansible_playbook
+      :display: true
+      :open_url: false
+      :display_for: single
+      :submit_how: one
+    userid: admin
+    wait_for_complete: 
+    name: Create Policy
+    visibility:
+      :roles:
+      - _ALL_
+    visibility_expression: 
+    enablement_expression: 
+    applies_to_id: 
+    disabled_text: 
+    resource_actions:
+      action: 
+      ae_namespace: SYSTEM
+      ae_class: PROCESS
+      ae_instance: Request
+      ae_message: create
+      ae_attributes:
+        request: Order_Ansible_Playbook
+        :service_template_name: Create Protection Policy
+        :hosts: localhost
+      dialog_label: CreateProtectionPolicy
+  - description: Register a Protection Source
+    applies_to_class: ExtManagementSystem
+    options:
+      :button_icon: pficon pficon-add-circle-o
+      :button_type: ansible_playbook
+      :display: true
+      :open_url: false
+      :display_for: single
+      :submit_how: one
+    userid: admin
+    wait_for_complete: 
+    name: Register Source
+    visibility:
+      :roles:
+      - _ALL_
+    visibility_expression: 
+    enablement_expression: 
+    applies_to_id: 
+    disabled_text: 
+    resource_actions:
+      action: 
+      ae_namespace: SYSTEM
+      ae_class: PROCESS
+      ae_instance: Request
+      ae_message: create
+      ae_attributes:
+        request: Order_Ansible_Playbook
+        :service_template_name: Register a source
+        :hosts: localhost
+      dialog_label: RegisterSource
+  - description: 'Restore VM '
+    applies_to_class: ExtManagementSystem
+    options:
+      :button_icon: ff ff-scsi
+      :button_type: ansible_playbook
+      :display: true
+      :open_url: false
+      :display_for: single
+      :submit_how: one
+    userid: admin
+    wait_for_complete: 
+    name: 'Restore VM '
+    visibility:
+      :roles:
+      - _ALL_
+    visibility_expression: 
+    enablement_expression: 
+    applies_to_id: 
+    disabled_text: 
+    resource_actions:
+      action: 
+      ae_namespace: SYSTEM
+      ae_class: PROCESS
+      ae_instance: Request
+      ae_message: create
+      ae_attributes:
+        request: Order_Ansible_Playbook
+        :service_template_name: Restore a VM
+        :hosts: localhost
+      dialog_label: RestoreVM
+  set_data:
+    :button_order:
+    - Register Source
+    - Create Policy
+    - Create Job
+    - 'Restore VM '
+    :button_icon: pficon pficon-equalizer
+    :button_color: "#96d602"
+    :display: true
+    :group_index: 1

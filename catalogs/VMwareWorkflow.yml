@@ -1,0 +1,194 @@
+---
+- VMwareWorkflow:
+    name: VMwareWorkflow
+    description: 
+    tenant_name: My Company
+    template:
+    - name: Register a source
+      description: Register a Protection Source
+      type: ServiceTemplateAnsiblePlaybook
+      display: true
+      service_type: atomic
+      prov_type: generic_ansible_playbook
+      provision_cost: 
+      long_description: ''
+      tenant_name: My Company
+      options:
+        :config_info:
+          :provision:
+            :hosts: localhost
+            :verbosity: '0'
+            :log_output: on_error
+            :extra_vars: {}
+            :execution_ttl: ''
+            :become_enabled: false
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/provision"
+            :repository_name: manageiq-ansible-demo
+            :playbook_name: register-vCenter.yml
+            :credential_name: ManageIQ Default Credential
+            :dialog_label: RegisterSource
+          :retirement:
+            :remove_resources: yes_without_playbook
+            :verbosity: '0'
+            :log_output: on_error
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"
+      service_template_catalog_name: VMwareWorkflow
+      resource_actions:
+      - action: Provision
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: provision
+        ae_message: 
+        ae_attributes:
+          :service_action: Provision
+        dialog_label: RegisterSource
+      - action: Retirement
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: Retire_Basic_Resource
+        ae_message: 
+        ae_attributes:
+          :service_action: Retirement
+      custom_buttons: []
+      custom_button_sets: []
+    - name: Create Protection Policy
+      description: Create a Protection Policy
+      type: ServiceTemplateAnsiblePlaybook
+      display: true
+      service_type: atomic
+      prov_type: generic_ansible_playbook
+      provision_cost: 
+      long_description: ''
+      tenant_name: My Company
+      options:
+        :config_info:
+          :provision:
+            :hosts: localhost
+            :verbosity: '4'
+            :log_output: on_error
+            :extra_vars: {}
+            :execution_ttl: ''
+            :become_enabled: false
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/provision"
+            :repository_name: manageiq-ansible-demo
+            :playbook_name: create-policy.yml
+            :credential_name: ManageIQ Default Credential
+            :dialog_label: CreateProtectionPolicy
+          :retirement:
+            :remove_resources: yes_without_playbook
+            :verbosity: '0'
+            :log_output: on_error
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"
+      service_template_catalog_name: VMwareWorkflow
+      resource_actions:
+      - action: Provision
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: provision
+        ae_message: 
+        ae_attributes:
+          :service_action: Provision
+        dialog_label: CreateProtectionPolicy
+      - action: Retirement
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: Retire_Basic_Resource
+        ae_message: 
+        ae_attributes:
+          :service_action: Retirement
+      custom_buttons: []
+      custom_button_sets: []
+    - name: Create a Protection Job
+      description: Create Protection Policy
+      type: ServiceTemplateAnsiblePlaybook
+      display: true
+      service_type: atomic
+      prov_type: generic_ansible_playbook
+      provision_cost: 
+      long_description: ''
+      tenant_name: My Company
+      options:
+        :config_info:
+          :provision:
+            :hosts: localhost
+            :verbosity: '0'
+            :log_output: on_error
+            :extra_vars: {}
+            :execution_ttl: ''
+            :become_enabled: false
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/provision"
+            :repository_name: manageiq-ansible-demo
+            :playbook_name: add_vmware_job.yml
+            :credential_name: ManageIQ Default Credential
+            :dialog_label: CreateProtectionJob
+          :retirement:
+            :remove_resources: yes_without_playbook
+            :verbosity: '0'
+            :log_output: on_error
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"
+      service_template_catalog_name: VMwareWorkflow
+      resource_actions:
+      - action: Provision
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: provision
+        ae_message: 
+        ae_attributes:
+          :service_action: Provision
+        dialog_label: CreateProtectionJob
+      - action: Retirement
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: Retire_Basic_Resource
+        ae_message: 
+        ae_attributes:
+          :service_action: Retirement
+      custom_buttons: []
+      custom_button_sets: []
+    - name: Restore a VM
+      description: ''
+      type: ServiceTemplateAnsiblePlaybook
+      display: true
+      service_type: atomic
+      prov_type: generic_ansible_playbook
+      provision_cost: 
+      long_description: ''
+      tenant_name: My Company
+      options:
+        :config_info:
+          :provision:
+            :hosts: localhost
+            :verbosity: '0'
+            :log_output: on_error
+            :extra_vars: {}
+            :execution_ttl: ''
+            :become_enabled: false
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/provision"
+            :repository_name: manageiq-ansible-demo
+            :playbook_name: restore-vmware.yml
+            :credential_name: ManageIQ Default Credential
+            :dialog_label: RestoreVM
+          :retirement:
+            :remove_resources: yes_without_playbook
+            :verbosity: '0'
+            :log_output: on_error
+            :fqname: "/Service/Generic/StateMachines/GenericLifecycle/Retire_Basic_Resource"
+      service_template_catalog_name: VMwareWorkflow
+      resource_actions:
+      - action: Provision
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: provision
+        ae_message: 
+        ae_attributes:
+          :service_action: Provision
+        dialog_label: RestoreVM
+      - action: Retirement
+        ae_namespace: Service/Generic/StateMachines
+        ae_class: GenericLifecycle
+        ae_instance: Retire_Basic_Resource
+        ae_message: 
+        ae_attributes:
+          :service_action: Retirement
+      custom_buttons: []
+      custom_button_sets: []

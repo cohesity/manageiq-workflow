@@ -1,0 +1,5 @@
+---
+# from galaxy
+- src: https://github.com/cohesity/cohesity-ansible-role/
+  version: AnsibleNas
+  name: cohesity.cohesity_ansible_role

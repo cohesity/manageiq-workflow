@@ -1,0 +1,28 @@
+---
+  - hosts: localhost
+    # => Please change these variables to connect
+    # => to your Cohesity Cluster
+    vars:
+        var_cohesity_server: 10.2.33.137
+        var_cohesity_admin: admin
+        var_validate_certs: False
+    become: False
+    roles:
+        - cohesity.cohesity_ansible_role
+    tasks:
+      - name: Create a protection policy
+        include_role:
+            name: cohesity.cohesity_ansible_role
+            tasks_from: policy
+        vars:
+            cohesity_server: "{{ var_cohesity_server }}"
+            cohesity_admin: "{{ var_cohesity_admin }}"
+            cohesity_password: "{{ var_cohesity_password }}"
+            cohesity_validate_certs: "{{ var_validate_certs }}"
+            cohesity_policy:
+                name: "{{ policy_name}}"
+                incremental_backup_schedule: 
+                  periodicity: Daily
+                  days:
+                    - Monday
+                state: present
